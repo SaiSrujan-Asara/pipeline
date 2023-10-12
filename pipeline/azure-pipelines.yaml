@@ -7,7 +7,7 @@ pr:
 pool:
   vmImage: 'windows-latest'
   demands: Agent.OS -equals WinNT
-  parallel: 3  # Set the maximum number of parallel jobs to 3
+  parallel: 1  # Set the maximum number of parallel jobs to 3
 
 steps:
 - script: |
