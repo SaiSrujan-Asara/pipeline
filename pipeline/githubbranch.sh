@@ -1,19 +1,8 @@
-#!/bin/sh
-
-UPSTREAM=${1:-'@{u}'}
-LOCAL=$(git rev-parse @)
-REMOTE=$(git rev-parse "$UPSTREAM")
-BASE=$(git merge-base @ "$UPSTREAM")
-echo "$LOCAL"
-echo "$REMOTE"
-echo "$BASE"
-
-if [ $LOCAL = $REMOTE ]; then
-    echo "Up-to-date"
-elif [ $LOCAL = $BASE ]; then
-    echo "Need to pull"
-elif [ $REMOTE = $BASE ]; then
-    echo "Need to push"
+changed=0
+git remote update && git status -uno | grep -q 'Your branch is behind' && changed=1
+if [ $changed = 1 ]; then
+    git pull
+    echo "Updated successfully";
 else
-    echo "Diverged"
+    echo "Up-to-date"
 fi
