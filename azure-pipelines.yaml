@@ -5,7 +5,7 @@ pr:
 - '*'
 
 pool:
-  name: test
+  name: kaka
 
 steps:
 - script: |
