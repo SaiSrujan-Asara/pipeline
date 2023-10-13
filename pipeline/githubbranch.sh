@@ -1,10 +1,7 @@
 #!/bin/bash
 
 main_branch="main"
-feature_branch=$(git branch --show-current)
-
-# Ensure we're in the repository directory
-cd /path/to/your/repository
+feature_branch="test1"
 
 # Fetch the latest changes from the remote repository
 git fetch origin
