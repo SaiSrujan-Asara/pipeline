@@ -11,4 +11,5 @@ steps:
 - script: |
     # Install Azure CLI
     echo "Hello from the Bash script"
+    pwd
   displayName: 'Terraform Plan & Apply'
