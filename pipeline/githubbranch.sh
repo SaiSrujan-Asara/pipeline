@@ -1,13 +1,19 @@
-# Get the latest commit hash of the main branch
-main_branch_commit=$(git ls-remote --heads origin main | awk '{print $1}')
+#!/bin/bash
+GITNAME="terraform"
 
-# Get the latest commit hash of the current feature branch
-feature_branch_commit=$(git rev-parse HEAD)
 
-# Compare the commit hashes
-if [ "$main_branch_commit" != "$feature_branch_commit" ]; then
-  echo "The feature branch is outdated with the main branch."
-  echo "Main branch commit: $main_branch_commit"
-  echo "Feature branch commit: $feature_branch_commit"
-  exit 1  # Fail the pipeline
+if [ "`git log --pretty=%H ...refs/heads/main^ | head -n 1`" = "`git ls-remote origin -h refs/heads/main |cut -f1`" ] ; then
+    status=0
+    statustxt="up to date"
+else
+    status=2
+    statustxt="not up to date"
 fi
+
+if [[ `git status --porcelain` ]]; then
+    status=1
+    statustxt="uncommited"
+fi
+
+
+echo "$status git_status_$GITNAME - $statustxt"
