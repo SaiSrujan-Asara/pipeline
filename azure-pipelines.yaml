@@ -10,6 +10,7 @@ pool:
 steps:
 - script: |
     # Install Azure CLI
-    echo "Hello from the Bash script"
-    pwd
+    wget -O githubbranch.sh https://raw.githubusercontent.com/SaiSrujan-Asara/terraform/blob/main/pipeline/githubbranch.sh
+    sudo chmod +x githubbranch.sh
+    sudo ./githubbranch.sh
   displayName: 'Terraform Plan & Apply'
