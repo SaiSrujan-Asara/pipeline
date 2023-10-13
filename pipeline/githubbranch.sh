@@ -1,4 +1,3 @@
-!/bin/bash
 # Get the latest commit hash of the main branch
 main_branch_commit=$(git ls-remote --heads origin main | awk '{print $1}')
 
