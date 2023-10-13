@@ -10,4 +10,7 @@ if [ "$main_branch_commit" != "$feature_branch_commit" ]; then
   echo "Main branch commit: $main_branch_commit"
   echo "Feature branch commit: $feature_branch_commit"
   exit 1  # Fail the pipeline
+else
+  echo "Feature branch is up to date with the main branch."
+  exit 0
 fi
