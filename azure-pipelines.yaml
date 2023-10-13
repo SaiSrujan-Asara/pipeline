@@ -5,20 +5,11 @@ pr:
 - '*'
 
 pool:
-  name: test
+  name: kaka
 
 steps:
 - script: |
     # Install Azure CLI
-    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-
-    # Authenticate with Azure
-    az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)
-    az account set --subscription $(subscriptionId)
-
-    # Terraform setup and execution
-    cd $(Build.SourcesDirectory)/path/to/terraform/code
-    terraform init
-    terraform plan -out=tfplan
-    terraform apply -input=false -auto-approve tfplan
+    echo "Hello from the Bash script"
+    pwd
   displayName: 'Terraform Plan & Apply'
