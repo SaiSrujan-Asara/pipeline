@@ -1,17 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-# Define the names of the main and feature branches
-main_branch="main"
-feature_branch="test1"
+UPSTREAM=${1:-'@{u}'}
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse "$UPSTREAM")
+BASE=$(git merge-base @ "$UPSTREAM")
 
-# Fetch the latest changes from the remote repository
-git fetch
-
-# Check if the feature branch is up to date with the main branch
-if git log --graph --oneline --decorate ${main_branch}..${feature_branch} --abbrev-commit | grep -qE "^\*"; then
-  echo "Feature branch is not up to date with the main branch."
-  exit 1
+if [ $LOCAL = $REMOTE ]; then
+    echo "Up-to-date"
+elif [ $LOCAL = $BASE ]; then
+    echo "Need to pull"
+elif [ $REMOTE = $BASE ]; then
+    echo "Need to push"
 else
-  echo "Feature branch is up to date with the main branch."
-  exit 0
+    echo "Diverged"
 fi
