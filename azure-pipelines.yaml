@@ -10,6 +10,6 @@ pool:
 steps:
 - script: |
     # Install Azure CLI
-    cd $(Build.SourcesDirectory)
+    cd $(Agent.BuildDirectory)
     pwd
   displayName: 'Terraform Plan & Apply'
