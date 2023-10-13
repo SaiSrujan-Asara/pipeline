@@ -1,8 +1,23 @@
-changed=0
-git remote update && git status -uno | grep -q 'Your branch is behind' && changed=1
-if [ $changed = 1 ]; then
-    git pull
-    echo "Updated successfully";
+#!/bin/bash
+
+# Define your feature branch and main branch
+feature_branch="your-feature-branch"
+main_branch="main"
+
+# Fetch the latest changes from GitHub
+git fetch
+
+# Check out the feature branch
+git checkout $feature_branch
+
+# Compare the feature branch with the main branch
+git status -uno
+
+# Check the result
+if [[ $? -eq 0 ]]; then
+  echo "The feature branch is up-to-date with $main_branch."
+elif [[ $? -eq 128 ]]; then
+  echo "The feature branch is behind $main_branch."
 else
-    echo "Up-to-date"
+  echo "The feature branch is ahead of $main_branch."
 fi
