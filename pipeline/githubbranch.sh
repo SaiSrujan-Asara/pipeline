@@ -8,10 +8,10 @@ echo "Feature branch: $feature_branch"
 git fetch origin main
 
 # Use `git rev-list` to count the number of commits the feature branch is ahead of the main branch
-commits_ahead=$(git rev-list --count origin/main.."$feature_branch")
+commits_ahead=$(git rev-list --count "$feature_branch"..origin/main)
 
 if [ "$commits_ahead" -eq 0 ]; then
     echo "Feature branch is up to date with the main branch."
 else
-    echo "Feature branch is $commits_ahead commits ahead of the main branch."
+    echo "Main branch is $commits_ahead commits ahead of the Feature branch."
 fi
