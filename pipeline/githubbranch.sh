@@ -1,19 +1,15 @@
 #!/bin/bash
-GITNAME="terraform"
 
+feature_branch= $(git branch --show-current)
+echo "Feature branch: $feature_branch"
+echo "Main branch: $main_branch"
 
-if [ "`git log --pretty=%H ...refs/heads/main^ | head -n 1`" = "`git ls-remote origin -h refs/heads/main |cut -f1`" ] ; then
-    status=0
-    statustxt="up to date"
+git fetch origin main
+
+value = $(git rev-list --count origin/main..test1)
+
+if [ value == 0 ]; then
+    echo "Feature Branch is Upto date with main branch"
 else
-    status=2
-    statustxt="not up to date"
+    echo "Feature Branch is not Upto date with main branch"
 fi
-
-if [[ `git status --porcelain` ]]; then
-    status=1
-    statustxt="uncommited"
-fi
-
-
-echo "$status git_status_$GITNAME - $statustxt"
