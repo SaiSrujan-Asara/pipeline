@@ -1,15 +1,17 @@
 #!/bin/bash
 
-feature_branch= $(git branch --show-current)
+# Get the current branch name (assuming you are using a relatively recent Git version)
+feature_branch=$(git branch --show-current)
 echo "Feature branch: $feature_branch"
-echo "Main branch: $main_branch"
 
+# Fetch the latest changes from the main branch
 git fetch origin main
 
-value = $(git rev-list --count origin/main..test1)
+# Use `git rev-list` to count the number of commits the feature branch is ahead of the main branch
+commits_ahead=$(git rev-list --count origin/main.."$feature_branch")
 
-if [ value == 0 ]; then
-    echo "Feature Branch is Upto date with main branch"
+if [ "$commits_ahead" -eq 0 ]; then
+    echo "Feature branch is up to date with the main branch."
 else
-    echo "Feature Branch is not Upto date with main branch"
+    echo "Feature branch is $commits_ahead commits ahead of the main branch."
 fi
