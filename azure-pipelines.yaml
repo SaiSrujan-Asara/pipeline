@@ -1,5 +1,5 @@
 trigger:
-- main  # Replace 'main 
+- main  # Replace 'main' 
 
 pr:
 - '*'
