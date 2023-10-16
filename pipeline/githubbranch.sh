@@ -7,7 +7,7 @@ echo "Feature branch: $feature_branch"
 # Fetch the latest changes from the remote main branch
 git fetch origin main
 
-# Use `git rev-list` to count the number of commits the main branch is ahead of feature branch 
+# Use `git rev-list` to count the number of commits the  remote main branch is ahead of feature branch 
 commits_ahead=$(git rev-list --count "$feature_branch"..origin/main)
 
 if [ "$commits_ahead" -eq 0 ]; then
