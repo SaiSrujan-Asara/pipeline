@@ -3,6 +3,7 @@
 # Get the current branch name
 feature_branch=$(git branch --show-current)
 echo "Feature branch: $feature_branch"
+echo "$(Build.SourceBranchName)"
 
 # Fetch the latest changes from the remote main branch
 git fetch origin main
