@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Get the current branch name
-# feature_branch=$(git branch --show-current)
 CURRENT_BRANCH=$1
 
 BRANCH_NAME=$(basename $CURRENT_BRANCH)
 
 echo "Current Branch: $BRANCH_NAME"
+
+git checkout "$BRANCH_NAME"
 
 # Fetch the latest changes from the remote main branch
 git fetch origin main
