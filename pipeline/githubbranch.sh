@@ -6,7 +6,7 @@ CURRENT_BRANCH=$1
 
 BRANCH_NAME=$(basename $CURRENT_BRANCH)
 
-echo "Current Branch: $CURRENT_BRANCH"
+echo "Current Branch: $BRANCH_NAME"
 
 # Fetch the latest changes from the remote main branch
 git fetch origin main
