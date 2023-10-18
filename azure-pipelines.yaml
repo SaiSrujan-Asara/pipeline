@@ -5,7 +5,7 @@ pr:
 - '*'
 
 pool:
-  name: mama
+  name: csot
 
 steps:
 - script: |
