@@ -10,8 +10,9 @@ pool:
 steps:
 - script: |
     # Install Azure CLI
+    CURRENT_BRANCH=$(Build.SourceBranch)
     cd $(Agent.BuildDirectory)/s/pipeline
     pwd
     chmod +x githubbranch.sh
-    ./githubbranch.sh
+    ./githubbranch.sh "$CURRENT_BRANCH"
   displayName: 'Terraform Plan & Apply'
