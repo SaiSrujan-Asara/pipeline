@@ -3,6 +3,9 @@
 # Get the current branch name
 # feature_branch=$(git branch --show-current)
 CURRENT_BRANCH=$1
+
+BRANCH_NAME=$(basename $CURRENT_BRANCH)
+
 echo "Current Branch: $CURRENT_BRANCH"
 
 # Fetch the latest changes from the remote main branch
