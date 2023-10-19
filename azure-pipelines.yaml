@@ -12,8 +12,11 @@ jobs:
   steps:
   - script: |
       CURRENT_BRANCH=$(Build.SourceBranch)
+      pwd
+      ls
       cd $(Agent.BuildDirectory)/s/pipeline
       pwd
+      ls
       chmod +x githubbranch.sh
       ./githubbranch.sh "$CURRENT_BRANCH"
 
