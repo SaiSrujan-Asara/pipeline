@@ -2,9 +2,9 @@
 
 # CURRENT_BRANCH=$1
 
-BRANCH_NAME=$(basename $CURRENT_BRANCH)
+# BRANCH_NAME=$(basename $CURRENT_BRANCH)
 
-echo "Current Branch: $BRANCH_NAME"
+echo "Current Branch: $(Build.SourceBranch)"
 
 # Set up GitHub credentials
 # export GITHUB_PAT=$GITHUB_PAT
