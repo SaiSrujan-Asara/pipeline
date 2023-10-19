@@ -7,12 +7,23 @@ pr:
 pool:
   name: tcl
 
-steps:
-- script: |
-    # Install Azure CLI
-    CURRENT_BRANCH=$(Build.SourceBranch)
-    cd $(Agent.BuildDirectory)/s/pipeline
-    pwd
-    chmod +x githubbranch.sh
-    ./githubbranch.sh "$CURRENT_BRANCH"
-  displayName: 'Terraform Plan & Apply'
+jobs:
+- job: checkbranchstatus
+  steps:
+  - script: |
+      CURRENT_BRANCH=$(Build.SourceBranch)
+      cd $(Agent.BuildDirectory)/s/pipeline
+      pwd
+      chmod +x githubbranch.sh
+      ./githubbranch.sh "$CURRENT_BRANCH"
+
+    displayName: 'Precheck'
+    continueOnError: false  # Allow the step to continue, even if it fails
+
+- job: terraform
+  dependsOn: checkbranchstatus
+  steps:
+  - script: |
+      # This job will only run if the previous job succeeded
+      echo "This job runs because the first job succeeded"
+    displayName: 'Main job'
