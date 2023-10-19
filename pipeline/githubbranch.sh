@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT_BRANCH=$1
+# CURRENT_BRANCH=$1
 
 BRANCH_NAME=$(basename $CURRENT_BRANCH)
 
@@ -16,7 +16,7 @@ echo "Current Branch: $BRANCH_NAME"
 # git clone https://$GITHUB_PAT@github.com/SaiSrujan-Asara/terraform.git  
 
 # Continue with your existing logic
-git checkout "$BRANCH_NAME"
+# git checkout "$BRANCH_NAME"
 git fetch origin main
 commits_ahead=$(git rev-list --count "$BRANCH_NAME"..origin/main)
 
