@@ -2,7 +2,7 @@
 k This for k.
 hi hello.
 hi.
-mama
+mama.
 kaka.
 1
 2
