@@ -18,9 +18,9 @@
 # Continue with your existing logic
 # git checkout "$BRANCH_NAME"
 
-BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+# BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 # Print the current branch name
-echo "Current Branch: $BRANCH_NAME"
+# echo "Current Branch: $BRANCH_NAME"
 
 git fetch origin main
 commits_ahead=$(git rev-list --count "$BRANCH_NAME"..origin/main)
