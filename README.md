@@ -1,6 +1,6 @@
 # terraform hi.
 k This for k.
-hi hello
+hi hello.
 hi.
 mama
 kaka
