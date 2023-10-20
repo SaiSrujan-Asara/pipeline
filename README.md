@@ -1,5 +1,5 @@
 # terraform hi
-k This for k
+k This for k.
 hi hello
 hi
 mama
