@@ -11,9 +11,13 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
-      /bin/bash pipeline/githubbranch.sh
-    displayName: 'Precheck'
-    continueOnError: false  # Allow the step to continue, even if it Fails
+       branch_reference="$BUILD_SOURCEBRANCH
+       echo $branch_reference
+    #   /bin/bash pipeline/githubbranch.sh 
+    # displayName: 'Precheck'
+    # continueOnError: false  # Allow the step to continue, even if it Fails
+    # variables: 
+    #   BRANCH_NAME: echo Build_SourceBranch
 
 - job: terraform
   dependsOn: checkbranchstatus
