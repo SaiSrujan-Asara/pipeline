@@ -22,6 +22,10 @@
 # Print the current branch name
 # echo "Current Branch: $BRANCH_NAME"
 
+branch_reference="$BUILD_SOURCEBRANCH"
+branch_name=${branch_reference#refs/heads/}
+echo "Branch Name: $branch_name"
+
 git fetch --depth = 0
 commits_ahead=$(git rev-list --count origin/main ^"$BRANCH_NAME")
 
