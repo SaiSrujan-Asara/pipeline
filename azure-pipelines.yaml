@@ -13,7 +13,7 @@ jobs:
   - script: |
       /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
-    continueOnError: false  # Allow the step to continue, even if it fails
+    continueOnError: false  # Allow the step to continue, even if it Fails
 
 - job: terraform
   dependsOn: checkbranchstatus
