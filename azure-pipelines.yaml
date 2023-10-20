@@ -12,7 +12,8 @@ jobs:
   steps:
   - script: |
        branch_reference="$BUILD_SOURCEBRANCH"
-       echo $branch_reference
+       branch_name=${branch_reference#refs/heads/}
+       echo "Branch Name: $branch_name"
     #   /bin/bash pipeline/githubbranch.sh 
     # displayName: 'Precheck'
     # continueOnError: false  # Allow the step to continue, even if it Fails
