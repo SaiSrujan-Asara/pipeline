@@ -23,10 +23,10 @@
 # echo "Current Branch: $BRANCH_NAME"
 
 branch_reference="$BUILD_SOURCEBRANCHNAME"
-# branch_name=${branch_reference#refs/heads/}
+branch_name=${branch_reference#refs/heads/}
 echo "Branch Name: $branch_name"
 
-commits_ahead=$(git rev-list --count origin/main ^origin/"$branch_reference")
+commits_ahead=$(git rev-list --count origin/main ^origin/"$branch_name")
 
 if [ "$commits_ahead" -eq 0 ]; then
     echo "Feature branch is up to date with the main branch."
