@@ -11,7 +11,9 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
-      git config advice.detachedHead false
+      branch_reference="$BUILD_SOURCEBRANCHNAME"
+      branch_name=${branch_reference#refs/heads/}
+      git checkout "$branch_name"
       /bin/bash pipeline/githubbranch.sh 
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
