@@ -22,8 +22,8 @@
 # Print the current branch name
 # echo "Current Branch: $BRANCH_NAME"
 
-git fetch origin main
-commits_ahead=$(git rev-list --count "$BRANCH_NAME"..origin/main)
+git fetch
+commits_ahead=$(git rev-list --count origin/main ^"$BRANCH_NAME")
 
 if [ "$commits_ahead" -eq 0 ]; then
     echo "Feature branch is up to date with the main branch."
