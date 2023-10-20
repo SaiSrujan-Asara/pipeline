@@ -22,6 +22,8 @@
 # Print the current branch name
 # echo "Current Branch: $BRANCH_NAME"
 
+git fetch
+
 branch_reference="$BUILD_SOURCEBRANCHNAME"
 branch_name=${branch_reference#refs/heads/}
 echo "Branch Name: $branch_name"
