@@ -11,7 +11,7 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
-       branch_reference="$BUILD_SOURCEBRANCH
+       branch_reference="$BUILD_SOURCEBRANCH"
        echo $branch_reference
     #   /bin/bash pipeline/githubbranch.sh 
     # displayName: 'Precheck'
