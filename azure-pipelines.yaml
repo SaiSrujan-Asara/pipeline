@@ -11,6 +11,7 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
+      git config advice.detachedHead false
       /bin/bash pipeline/githubbranch.sh 
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
