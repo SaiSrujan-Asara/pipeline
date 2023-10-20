@@ -11,10 +11,7 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
-      cd $(Agent.BuildDirectory)/s/pipeline
-      chmod +x githubbranch.sh
-      ./githubbranch.sh
-
+      /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it fails
 
