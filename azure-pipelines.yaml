@@ -5,7 +5,7 @@ pr:
 - '*'
 
 pool:
-  name: Azure Pipelines
+  name: tcl
 
 jobs:
 - job: checkbranchstatus
