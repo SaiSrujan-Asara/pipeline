@@ -30,7 +30,7 @@ git fetch
 
 commits_ahead=$(git rev-list --count origin/main ^origin/"$branch_name")
 
-if [ "$commits_ahead" -le 1 ]; then
+if [ "$commits_ahead" -eq 0 ]; then
     echo "Feature branch is up to date with the main branch."
 else
     echo "Please update your feature branch with the main branch."
