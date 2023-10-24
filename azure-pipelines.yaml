@@ -16,7 +16,7 @@ jobs:
       # git checkout "$branch_name"
       # /bin/bash pipeline/githubbranch.sh
       # Fetch the latest changes from the remote main branch
-      /bin/bash pipeline/githubbranch.sh
+      # /bin/bash pipeline/githubbranch.sh
       
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
