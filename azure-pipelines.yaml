@@ -19,7 +19,7 @@ jobs:
       git fetch
 
       # Check out the feature branch
-      git checkout main
+      # git checkout main
 
       # Merge the latest changes from the main branch into the feature branch
       git pull origin main
