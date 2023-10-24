@@ -14,7 +14,7 @@ jobs:
       branch_reference="$BUILD_SOURCEBRANCHNAME"
       branch_name=${branch_reference#refs/heads/}
       git checkout "$branch_name"
-      /bin/bash pipeline/githubbranch.sh 
+      /bin/bash pipeline/branch.sh 
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
     # variables: 
