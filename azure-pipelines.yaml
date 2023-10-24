@@ -16,6 +16,7 @@ jobs:
       # git checkout "$branch_name"
       # /bin/bash pipeline/branch.sh 
       # Fetch the latest changes from the remote main branch
+      git remote set-url origin https://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@github.com/SaiSrujan-Asara/terraform.git
       git fetch
 
       # Check out the feature branch
