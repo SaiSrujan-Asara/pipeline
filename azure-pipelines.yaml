@@ -17,6 +17,7 @@ jobs:
       # /bin/bash pipeline/githubbranch.sh
       # Fetch the latest changes from the remote main branch
       # /bin/bash pipeline/githubbranch.sh
+      echo "Hi"
       
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
