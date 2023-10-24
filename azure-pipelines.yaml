@@ -25,7 +25,7 @@ jobs:
       git merge origin/main
 
       # Push the updated feature branch back to the remote repository
-      git push origin main
+      git push origin HEAD:main
       
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
