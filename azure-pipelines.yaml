@@ -14,19 +14,9 @@ jobs:
       # branch_reference="$BUILD_SOURCEBRANCHNAME"
       # branch_name=${branch_reference#refs/heads/}
       # git checkout "$branch_name"
-      # /bin/bash pipeline/branch.sh 
+      /bin/bash pipeline/githubbranch.sh 
       # Fetch the latest changes from the remote main branch
-      git remote set-url origin https://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@github.com/SaiSrujan-Asara/terraform.git
-      git fetch
-
-      # Check out the feature branch
-      git checkout main
-
-      # Merge the latest changes from the main branch into the feature branch
-      git merge origin/main
-
-      # Push the updated feature branch back to the remote repository
-      git push origin HEAD:main
+      
       
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
