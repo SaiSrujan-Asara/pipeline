@@ -14,7 +14,18 @@ jobs:
       # branch_reference="$BUILD_SOURCEBRANCHNAME"
       # branch_name=${branch_reference#refs/heads/}
       # git checkout "$branch_name"
-      /bin/bash pipeline/branch.sh 
+      # /bin/bash pipeline/branch.sh 
+      # Fetch the latest changes from the remote main branch
+      git fetch || handle_error "Failed to fetch latest changes from $MAIN_BRANCH."
+
+      # Check out the feature branch
+      git checkout main || handle_error "Failed to check out $FEATURE_BRANCH."
+
+      # Merge the latest changes from the main branch into the feature branch
+      git pull origin main || handle_error "Failed to merge changes from $MAIN_BRANCH."
+
+      # Push the updated feature branch back to the remote repository
+      git push origin main || handle_error "Failed to push changes to $FEATURE_BRANCH."
     displayName: 'Precheck'
     continueOnError: false  # Allow the step to continue, even if it Fails
     # variables: 
