@@ -10,7 +10,7 @@
 # export GITHUB_PAT=$GITHUB_PAT
 
 # git config --global user.email "your.email@example.com"
-# git config --global user.name "Your Name"
+# git config --global user.name "Your Name."
 
 # Clone the GitHub repository using the PAT
 # git clone https://$GITHUB_PAT@github.com/SaiSrujan-Asara/terraform.git  
