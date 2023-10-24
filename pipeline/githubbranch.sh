@@ -1,4 +1,3 @@
-branch_reference="$BUILD_SOURCEBRANCHNAME"
 branch_name=${branch_reference#refs/heads/}
 echo "Branch Name: $branch_name"
 git fetch
