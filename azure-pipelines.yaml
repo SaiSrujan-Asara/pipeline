@@ -11,7 +11,7 @@ jobs:
 - job: checkbranchstatus
   steps:
   - script: |
-      pipeline/githubbranch.sh
+      # pipeline/githubbranch.sh
       # branch_reference="$BUILD_SOURCEBRANCHNAME"
       # branch_name=${branch_reference#refs/heads/}
       # git checkout "$branch_name"
