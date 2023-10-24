@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Define your feature branch and the remote main branch
-FEATURE_BRANCH="your-feature-branch"
+branch_reference="$BUILD_SOURCEBRANCHNAME"
+FEATURE_BRANCH=${branch_reference#refs/heads/}
+echo "Branch Name: $FEATURE_BRANCH"
+
 MAIN_BRANCH="main"
 
 # Function for error handling
@@ -24,7 +27,7 @@ git fetch origin "$MAIN_BRANCH" || handle_error "Failed to fetch latest changes 
 git checkout "$FEATURE_BRANCH" || handle_error "Failed to check out $FEATURE_BRANCH."
 
 # Merge the latest changes from the main branch into the feature branch
-git merge "origin/$MAIN_BRANCH" || handle_error "Failed to merge changes from $MAIN_BRANCH."
+git pull origin "$MAIN_BRANCH" || handle_error "Failed to merge changes from $MAIN_BRANCH."
 
 # Check for merge conflicts
 check_for_merge_conflicts
