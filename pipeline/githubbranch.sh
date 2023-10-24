@@ -3,6 +3,7 @@ branch_name=${branch_reference#refs/heads/}
 echo "Branch Name: $branch_name"
 git fetch
 commits_ahead=$(git rev-list --count origin/main ^origin/"$branch_name")
+echo "total commits: $commits_ahead"
 if [ "$commits_ahead" -eq 0 ]; then
     echo "Feature branch is up to date with the main branch."
 else
