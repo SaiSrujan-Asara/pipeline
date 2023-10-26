@@ -7,8 +7,10 @@ pool:
 jobs:
 - job: checkbranchstatus
   steps:
-  - checkout: git://github.com/SaiSrujan-Asara/terraform.git@refs/heads/main
-    fetchDepth: 0    
+  - checkout: self 
+    clean: true    
+    fetchDepth: 0  
+    ref: 'refs/heads/feat/main'    
   - script: |
       /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
