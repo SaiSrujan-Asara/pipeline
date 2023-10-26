@@ -13,37 +13,22 @@ resources:
     name: SaiSrujan-Asara/terraform
     ref: main
 
-stages:
-- stage: MainBranch
-  jobs:
-  - job: MainBranchJob
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
-    steps:
-    - script: echo "This job runs for the main branch"
+jobs:
+- job: checkbranchstatus
+  condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
+  steps:
+  - checkout: terraform
+    clean: true
+    fetchDepth: 0
+  - script: |
+      /bin/bash pipeline/githubbranch.sh
+    displayName: 'Precheck'
+    continueOnError: false
 
-- stage: FeatureBranch
-  jobs:
-  - job: FeatureBranchJob
-    condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
-    steps:
-    - script: echo "This job runs for feature branches"
-
-# jobs:
-# - job: checkbranchstatus
-#   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
-#   steps:
-#   - checkout: terraform
-#     clean: true
-#     fetchDepth: 0
-#   - script: |
-#       /bin/bash pipeline/githubbranch.sh
-#     displayName: 'Precheck'
-#     continueOnError: false
-
-# - job: terraform
-#   dependsOn: checkbranchstatus
-#   steps:
-#   - script: |
-#       # This job will only run if the previous job succeeded
-#       echo "This job runs because the first job succeeded"
-#     displayName: 'Main job'
+- job: terraform
+  dependsOn: checkbranchstatus
+  steps:
+  - script: |
+      # This job will only run if the previous job succeeded
+      echo "This job runs because the first job succeeded"
+    displayName: 'Main job'
