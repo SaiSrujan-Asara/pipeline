@@ -10,7 +10,7 @@ jobs:
   - checkout: self 
     clean: true    
     fetchDepth: 0  
-    ref: 'refs/heads/feat/main'    
+    ref: 'refs/heads/feat/rrr-1'
   - script: |
       /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
