@@ -16,7 +16,7 @@ check_branch_status() {
       exit 1
   fi
 }
-
+echo "branch: $BUILD_SOURCEBRANCHNAME"
 if [ "$BUILD_SOURCEBRANCHNAME" != "refs/heads/main" ]; then
   check_branch_status
 else
