@@ -7,7 +7,7 @@ pool:
 jobs:
 - job: checkbranchstatus
   steps:
-  - checkout: origin/main 
+  - checkout: main 
     clean: true    
     fetchDepth: 0  
   - script: |
