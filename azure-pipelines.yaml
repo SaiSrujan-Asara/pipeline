@@ -1,19 +1,28 @@
 trigger:
-- main  # Replace 'main with main.' 
+- main
 pr:
 - '*'
 pool:
   name: tcl
+
+resources:
+  repositories:
+  - repository: terraform
+    type: github
+    name: SaiSrujan-Asara/terraform
+    ref: main
+
 jobs:
 - job: checkbranchstatus
   steps:
-  - checkout: main 
-    clean: true    
-    fetchDepth: 0  
+  - checkout: terraform
+    clean: true
+    fetchDepth: 0
   - script: |
       /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
-    continueOnError: false  # Allow the step to continue, even if it Fails
+    continueOnError: false
+
 - job: terraform
   dependsOn: checkbranchstatus
   steps:
