@@ -1,5 +1,5 @@
 #!/bin/bash
-
+1
 # Define your feature branch and the remote main branch
 branch_reference="$BUILD_SOURCEBRANCHNAME"
 FEATURE_BRANCH=${branch_reference#refs/heads/}
