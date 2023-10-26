@@ -9,7 +9,7 @@ resources:
   repositories:
   - repository: terraform
     type: github
-    endpoint: YourGitHubServiceConnection
+    endpoint: test-connection
     name: SaiSrujan-Asara/terraform
     ref: main
 
