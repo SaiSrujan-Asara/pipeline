@@ -21,7 +21,10 @@ jobs:
     clean: true
     fetchDepth: 0
   - script: |
-      /bin/bash pipeline/githubbranch.sh
+      if [ "$(Build.SourceBranch)" == "main" ]; then
+        echo "This is 'main' branch"
+      else
+        /bin/bash pipeline/githubbranch.sh
     displayName: 'Precheck'
     continueOnError: false
 
