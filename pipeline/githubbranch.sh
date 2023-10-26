@@ -1,4 +1,7 @@
-echo "Branch Name: $BUILD_SOURCEBRANCHNAME"
+branch_reference="$BUILD_SOURCEBRANCHNAME"
+branch_name=${branch_reference#refs/heads/}
+echo "Branch Name: $branch_name"
+# git fetch
 commits_ahead=$(git rev-list --count origin/main ^origin/"$branch_name")
 commits_bhead=$(git rev-list --count ^origin/main origin/"$branch_name")
 echo "Missing Main commits in feature branch : $commits_ahead"
