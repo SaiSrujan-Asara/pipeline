@@ -11,7 +11,6 @@ check_branch_status() {
       exit 1
   fi
 }
-echo "branch: $BUILD_SOURCEBRANCHNAME"
 if [ "$BUILD_SOURCEBRANCHNAME" != "main" ]; then
   check_branch_status
 else
