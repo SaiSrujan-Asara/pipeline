@@ -15,16 +15,16 @@ pool:
 
 jobs:
 - job: checkbranchstatus
-  # condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
   steps:
   - checkout: self
     clean: true
     fetchDepth: 0
   - script: |
-      # if [ "$(Build.SourceBranch)" == "main" ]; then
-      #   echo "This is 'main' branch"
-      # else
-      /bin/bash pipeline/githubbranch.sh
+      if [ "$(Build.SourceBranch)" == "refs/heads/main" ]; then
+        echo "This is the 'main' branch"
+      else
+        /bin/bash pipeline/githubbranch.sh
+      fi
     displayName: 'Precheck'
     continueOnError: false
 
@@ -32,6 +32,6 @@ jobs:
   dependsOn: checkbranchstatus
   steps:
   - script: |
-      # This job will only run if the previous job succeeded
+      # This job will only run if the previous job (checkbranchstatus) succeeded
       echo "This job runs because the first job succeeded"
     displayName: 'Main job'
