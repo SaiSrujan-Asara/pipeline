@@ -17,7 +17,7 @@ jobs:
 - job: checkbranchstatus
   # condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
   steps:
-  - checkout: terraform
+  - checkout: self
     clean: true
     fetchDepth: 0
   - script: |
