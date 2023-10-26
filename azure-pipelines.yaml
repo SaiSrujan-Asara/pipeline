@@ -9,8 +9,10 @@ resources:
   repositories:
   - repository: terraform
     type: github
+    endpoint: YourGitHubServiceConnection
     name: SaiSrujan-Asara/terraform
     ref: main
+
 
 jobs:
 - job: checkbranchstatus
