@@ -4,7 +4,7 @@
 branch_reference="$BUILD_SOURCEBRANCHNAME"
 FEATURE_BRANCH=${branch_reference#refs/heads/}
 echo "Branch Name: $FEATURE_BRANCH"
-
+2
 MAIN_BRANCH="main"
 
 # Function for error handling
