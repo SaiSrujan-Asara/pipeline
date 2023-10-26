@@ -16,6 +16,7 @@ resources:
 
 jobs:
 - job: checkbranchstatus
+  condition: ne(variables['Build.SourceBranchName'], 'refs/heads/main')
   steps:
   - checkout: terraform
     clean: true
