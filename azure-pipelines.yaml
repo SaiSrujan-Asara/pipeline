@@ -5,13 +5,13 @@ pr:
 pool:
   name: tcl
 
-resources:
-  repositories:
-  - repository: terraform
-    type: github
-    endpoint: test-connection
-    name: SaiSrujan-Asara/terraform
-    ref: main
+# resources:
+#   repositories:
+#   - repository: terraform
+#     type: github
+#     endpoint: test-connection
+#     name: SaiSrujan-Asara/terraform
+#     ref: main
 
 jobs:
 - job: checkbranchstatus
