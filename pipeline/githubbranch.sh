@@ -17,7 +17,7 @@ check_branch_status() {
   fi
 }
 echo "branch: $BUILD_SOURCEBRANCHNAME"
-if [ "$BUILD_SOURCEBRANCHNAME" != "refs/heads/main" ]; then
+if [ "$BUILD_SOURCEBRANCHNAME" != "main" ]; then
   check_branch_status
 else
   echo "Branch is 'main'. No need to check for updates."
