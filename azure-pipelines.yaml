@@ -27,7 +27,7 @@ stages:
               if [ "$(Build.SourceBranch)" == "refs/heads/main" ]; then
                 echo "This is Infrastructure Repo 'Main' branch"
               else
-                /bin/bash branch_status.sh
+                /bin/bash pipeline/githubbranch.sh
                 exit 1
               fi
             displayName: 'check_branch_status'
