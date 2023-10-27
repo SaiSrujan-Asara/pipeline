@@ -17,7 +17,7 @@ stages:
   - stage: branch_state  
     jobs:
       - job: branch_precheck
-        condition: ne(variables['Build.SourceBranchName'], 'refs/heads/main')
+        condition: ne(variables['Build.SourceBranch'], 'refs/heads/main')
         steps:
           - checkout: self
             clean: true
