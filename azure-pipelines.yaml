@@ -39,7 +39,7 @@ stages:
           - script: |
               # This job will only run if the previous job (checkbranchstatus) succeeded
               echo "This job runs because the first job succeeded"
-          displayName: 'Main job'
+            displayName: 'Main job'
             
 # jobs:
 # - job: checkbranchstatus
