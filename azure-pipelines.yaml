@@ -33,7 +33,7 @@ stages:
             displayName: 'check_branch_status'
             continueOnError: false
   - stage: second
-      dependsOn: branch_state
+      dependsOn: branch_precheck
       jobs:
         - job: terraform
           steps:
