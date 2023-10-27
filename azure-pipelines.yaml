@@ -33,13 +33,13 @@ stages:
             displayName: 'check_branch_status'
             continueOnError: false
   - stage: second
-      jobs:
-        - job: terraform
-          steps:
-            - script: |
-                # This job will only run if the previous job (checkbranchstatus) succeeded
-                echo "This job runs because the first job succeeded"
-            displayName: 'Main job'
+    jobs:
+      - job: terraform
+        steps:
+          - script: |
+              # This job will only run if the previous job (checkbranchstatus) succeeded
+              echo "This job runs because the first job succeeded"
+          displayName: 'Main job'
             
 # jobs:
 # - job: checkbranchstatus
