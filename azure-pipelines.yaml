@@ -13,25 +13,54 @@ pool:
 #     name: SaiSrujan-Asara/terraform
 #     ref: main
 
-jobs:
-- job: checkbranchstatus
-  steps:
-  - checkout: self
-    clean: true
-    fetchDepth: 0
-  - script: |
-      if [ "$(Build.SourceBranch)" == "refs/heads/main" ]; then
-        echo "This is the 'main' branch"
-      else
-        /bin/bash pipeline/githubbranch.sh
-      fi
-    displayName: 'Precheck'
-    continueOnError: false
+stages:
+  - stage: branch_state  
+    jobs:
+      - job: branch_precheck
+        condition: ne(variables.isMain, true)
+        steps:
+          - checkout: self
+            clean: true
+            fetchDepth: 0
+          - script: |
+              # Skip the execution of branch_status.sh script, if pipeline is running through the Main Branch
+              if [ "$(Build.SourceBranch)" == "refs/heads/main" ]; then
+                echo "This is Infrastructure Repo 'Main' branch"
+              else
+                /bin/bash branch_status.sh
+                exit 1
+              fi
+            displayName: 'check_branch_status'
+            continueOnError: false
+  - stage: second
+      dependsOn: branch_check
+      jobs:
+        - job: terraform
+          steps:
+            - script: |
+                # This job will only run if the previous job (checkbranchstatus) succeeded
+                echo "This job runs because the first job succeeded"
+            displayName: 'Main job'
+            
+# jobs:
+# - job: checkbranchstatus
+#   steps:
+#   - checkout: self
+#     clean: true
+#     fetchDepth: 0
+#   - script: |
+#       if [ "$(Build.SourceBranch)" == "refs/heads/main" ]; then
+#         echo "This is the 'main' branch"
+#       else
+#         /bin/bash pipeline/githubbranch.sh
+#       fi
+#     displayName: 'Precheck'
+#     continueOnError: false
 
-- job: terraform
-  dependsOn: checkbranchstatus
-  steps:
-  - script: |
-      # This job will only run if the previous job (checkbranchstatus) succeeded
-      echo "This job runs because the first job succeeded"
-    displayName: 'Main job'
+# - job: terraform
+#   dependsOn: checkbranchstatus
+#   steps:
+#   - script: |
+#       # This job will only run if the previous job (checkbranchstatus) succeeded
+#       echo "This job runs because the first job succeeded"
+#     displayName: 'Main job'
