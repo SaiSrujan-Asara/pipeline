@@ -28,7 +28,6 @@ stages:
                 echo "This is Infrastructure Repo 'Main' branch"
               else
                 /bin/bash pipeline/githubbranch.sh
-                exit 1
               fi
             displayName: 'check_branch_status'
             continueOnError: false
