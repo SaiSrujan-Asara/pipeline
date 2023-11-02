@@ -1,7 +1,7 @@
 branch_name="$BUILD_SOURCEBRANCHNAME"
 echo "Branch Name: $branch_name"
 # git fetch
-full_branch_name=$(echo "$(Build.SourceBranch)" | cut -d'/' -f 2)
+full_branch_name=$(echo "$BUILD_SOURCEBRANCHNAME" | cut -d'/' -f 2)
 # Output the full branch name
 echo "Full Branch Name: $full_branch_name"
 
